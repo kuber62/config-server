@@ -14,4 +14,7 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka/
       
-unik-api.message: Welcome to micrso-services demo..!!
+unik-service.message: Welcome to micrso-services demo..!!
+unik-jms:
+  in-queue: ${spring.application.name}-IN
+  out-queue: ${spring.application.name}-OUT
