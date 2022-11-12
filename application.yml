@@ -17,6 +17,3 @@ eureka:
 unik:
   service:
     message: Welcome to micrso-services demo..!!
-  jms-broker:
-    in-queue: ${spring.application.name}-IN
-    out-queue: ${spring.application.name}-OUT
