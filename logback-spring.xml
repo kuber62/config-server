@@ -4,7 +4,7 @@
     <springProperty scope="context" name="springAppName" source="unik.service.log.name" />
 
     <property name="LOG_FILE" value="/opt/data/logs/${springAppName}.log"/>
-    <property name="ENCODER_PATTERN" value="[%d{yyyy-MM-dd HH:mm:ss}] [%thread] %-5level %logger{36}.%M - %X{mdcData} [%X{X-B3-TraceId:-} %X{X-B3-SpanId:-} %X{X-Span-Export:-}] %msg%n"/>
+    <property name="ENCODER_PATTERN" value="%d{ABSOLUTE} [%X{X-B3-TraceId}/%X{X-B3-SpanId}] %-5p [%t] %C{2} - %m%n"/>
 
     <appender name="ROLLING-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_FILE}</file>
@@ -30,7 +30,7 @@
         <appender-ref ref="ROLLING-FILE"/>
     </logger>-->
 
-    <root level="INFO">
+    <root level="DEBUG">
         <appender-ref ref="ROLLING-FILE"/>
     </root>
 
