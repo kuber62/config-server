@@ -4,8 +4,7 @@
     <springProperty scope="context" name="springAppName" source="unik.service.log.name" />
 
     <property name="LOG_FILE" value="/opt/data/logs/${springAppName}.log"/>
-    <property name="ENCODER_PATTERN" value="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p})
-            %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+    <property name="ENCODER_PATTERN" value="[%d{yyyy-MM-dd HH:mm:ss}] [%thread] %-5level %logger{36}.%M - %X{mdcData} [%X{X-B3-TraceId:-} %X{X-B3-SpanId:-} %X{X-Span-Export:-}] %msg%n"/>
 
     <appender name="ROLLING-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_FILE}</file>
