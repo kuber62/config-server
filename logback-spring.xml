@@ -4,7 +4,7 @@
 
     <springProperty scope="context" name="springAppName" source="unik.service.log.name"/>
     <!-- Example for logging into the build folder of your project -->
-    <property name="LOG_FILE" value="/opt/data/logs/${springAppName}.log"/>
+    <property name="LOG_FILE" value="/opt/data/logs/${springAppName}"/>
 
     <!-- You can override this to have a custom pattern -->
     <property name="CONSOLE_LOG_PATTERN"
@@ -24,10 +24,16 @@
 
     <!-- Appender to log to file -->
     <appender name="flatfile" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOG_FILE}</file>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}.gz</fileNamePattern>
-            <maxHistory>7</maxHistory>
+        <file>${LOG_FILE}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>/opt/data/logs/${LOG_FILE}-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <!-- each archived file, size max 10MB -->
+            <maxFileSize>10MB</maxFileSize>
+            <!-- total size of all archive files, if total size > 20GB, 
+				it will delete old archived file -->
+            <totalSizeCap>20GB</totalSizeCap>
+            <!-- 60 days to keep -->
+            <maxHistory>60</maxHistory>
         </rollingPolicy>
         <encoder>
             <pattern>${CONSOLE_LOG_PATTERN}</pattern>
