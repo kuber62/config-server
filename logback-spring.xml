@@ -14,7 +14,7 @@
             <fileNamePattern>${LOG_FILE}-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <!-- each archived file, size max 10MB -->
             <maxFileSize>10MB</maxFileSize>
-            <!-- total size of all archive files, if total size > 20GB, 
+            <!-- total size of all archive files, if total size > 20GB,
 				it will delete old archived file -->
             <totalSizeCap>20GB</totalSizeCap>
             <!-- 60 days to keep -->
@@ -27,9 +27,9 @@
         </encoder>
     </appender>
 
-    <logger name="com.uniktech" level="DEBUG" additivity="false">
+    <!--<logger name="com.uniktech" level="DEBUG" additivity="false">
         <appender-ref ref="ROLLING-FILE"/>
-    </logger>
+    </logger>-->
 
     <root level="INFO">
         <appender-ref ref="ROLLING-FILE"/>
